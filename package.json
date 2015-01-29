@@ -1,0 +1,31 @@
+{
+	"name": "dailynote",
+	"private": true,
+	"version": "0.0.0",
+	"description": "DailyNote",
+	"repository": {
+		"type": "git",
+		"urL": "https://github.com/jvdub/dailynote.git"
+	},
+	"engines": {
+		"node": "0.10.x"
+	},
+	"license:": "Apache 2.0",
+	"dependencies": {
+		"bower": "^1.3.4",
+		"express": "~4.4.1",
+		"ejs": "1.0.0",
+		"connect": "2.19.4",
+		"connect-timeout": "1.1.0",
+		"connect-busboy": "0.0.1",
+		"method-override": "2.0.2",
+		"errorhandler": "1.0.2",
+		"mongoose": "3.8.12",
+		"connect-mongodb": "1.1.5",
+	},
+	"scripts": {
+		"postinstall": "bower install",
+		"prestart": "npm install",
+		"start": "node app.js"
+	}
+}
