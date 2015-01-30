@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>DailyNote</title>
-	<link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
-	<link rel="stylesheet" href="css/app.css"/>
+  <title>DailyNote</title>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
+  <link rel="stylesheet" href="css/app.css"/>
 </head>
 <body>
-	<h1>Daily Note</h1>
+  <div class="container">
+    <h1>Daily Note</h1>
+    <form id="newNote" class="form" action="">
+      <h3>Add New Note</h3>
+      <input id="noteTitle" type="text" class="form-control" placeholder="Title">
+      <textarea id="note" class="form-control"></textarea>
+      <button type="submit" class="btn btn-primary">Add Note</button>
+    </form>
+    <div class="notesWrapper">
+      <h3>Notes</h3>
+      <div id="notes"></div>
+    </div>
+  </div>
+  <script src="jquery/jquery.min.js"></script> 
+  <script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>

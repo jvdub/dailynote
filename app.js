@@ -1,13 +1,15 @@
+require('./db');
+
 var express = require('express'),
-	connect = require('connect'),
-	errorHandler = require('errorhandler'),
-    connectTimeout = require('connect-timeout'),
-    busboy = require('connect-busboy'),
-    methodOverride = require('method-override'),
-	http = require('http'),
-	path = require('path'),
-	app = express(),
-	note = require('./server/notes');
+  connect = require('connect'),
+  errorHandler = require('errorhandler'),
+  connectTimeout = require('connect-timeout'),
+  busboy = require('connect-busboy'),
+  methodOverride = require('method-override'),
+  http = require('http'),
+  path = require('path'),
+  app = express(),
+  notes = require('./server/notes');
 
 // General app configuration
 app.set('port', process.env.PORT || 5001);
@@ -29,21 +31,25 @@ app.use('/jquery', express.static(__dirname + '/bower_components/jquery/dist'));
 
 // Define the different routes we support
 app.route('/')
-	.get(function (req, res) {
-		res.render('../app/index.html');
-	});
+  .get(function (req, res) {
+    res.render('../app/index.html');
+  });
+
+app.route('/notes/:id')
+  .get(notes.getNote);
 
 app.route('/notes')
-	.get(notes.getNotes);
+  .get(notes.get)
+  .post(notes.addNote);
 
 // Indicate any other api requests are not implemented
 app.all('/v1/*', function (req, res, next) {
-	res.writeHead(501);
-	res.end();
+  res.writeHead(501);
+  res.end();
 });
 
 // app.all('/*', loadUser);
 
 http.createServer(app).listen(app.get('port'), function () {
-	console.log('Express server listening on port ' + app.get('port'));
+  console.log('Express server listening on port ' + app.get('port'));
 });
