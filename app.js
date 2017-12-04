@@ -14,12 +14,7 @@ var express = require('express'),
 // General app configuration
 app.set('port', process.env.PORT || 5001);
 app.engine('html', require('ejs').renderFile);
-app.use(connect.favicon('app/img/favicon.ico'));
-app.use(connect.cookieParser());
 app.use(busboy());
-app.use(connect.json());
-app.use(connect.urlencoded());
-app.use(connect.logger({ format: '\x1b[1m:method\x1b[0m \x1b[33m:url\x1b[0m :response-time ms' }))
 app.use(methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/js', express.static(__dirname + '/app/js'));
